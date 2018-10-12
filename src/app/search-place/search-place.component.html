@@ -1,0 +1,19 @@
+<div>
+  search-place works!
+  <p>
+    <input [(ngModel)]="searchCity"/>
+    <select [(ngModel)]="selectedCity" (change)="getPlaces()">
+      <option *ngFor="let city of cities | filterCityPipe:'name':searchCity; index as i;"[value]="i">
+        {{city.name}} {{city.postCode}}
+      </option>
+    </select>
+  </p>
+  <p>
+    <input [(ngModel)]="searchPlace"/>
+    <select [(ngModel)]="selectedPlace">
+      <option *ngFor="let place of places | filterCityPipe:'name':searchPlace"[value]="place.idPlace">
+        {{place.name}} {{place.address}}
+      </option>
+    </select>
+  </p>
+</div>
