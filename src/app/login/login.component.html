@@ -1,0 +1,13 @@
+<div *ngIf="!isLoggedIn; else loggedOut">
+  <form (submit)="login()">
+    <input [(ngModel)]="pseudo" type="text" placeholder="pseudo" [ngModelOptions]="{standalone: true}">
+    <input [(ngModel)]="password" type="password" placeholder="password" [ngModelOptions]="{standalone: true}">
+    <input type="submit" value="Log In"/>
+  </form>
+</div>
+<ng-template #loggedOut>
+  <p>
+    Hello {{currentUser.pseudo}}
+    <input type="submit" value="Log out" (click)="logout()"/>
+  </p>
+</ng-template>
