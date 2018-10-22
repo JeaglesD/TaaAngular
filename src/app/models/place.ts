@@ -1,11 +1,11 @@
 export class Place {
-  idPlace : number;
-  name : string;
-  address : string;
+  idPlace: number;
+  name: string;
+  address: string;
   idCity: number;
-  idActivites : number[];
-  idUsers : number[];
-  constructor(idPlace, name, address, idCity, idActivites, idUsers){
+  idActivites: number[];
+  idUsers: number[];
+  constructor(idPlace, name, address, idCity, idActivites, idUsers) {
     this.idPlace = idPlace;
     this.name = name;
     this.address = address;
