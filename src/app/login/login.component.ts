@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.authentificationService.getUser(idCurrentUser).subscribe(data =>{
         this.currentUser = data
       }, error =>{
-        console.log('constructor error', error);
+        //console.log('constructor error', error);
         this.currentUser = new User(NaN, "", "", "");
       }
     )
