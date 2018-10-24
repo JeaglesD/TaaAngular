@@ -4,11 +4,11 @@ import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: './log-in.component.html',
+  styleUrls: ['./log-in.component.css'],
   providers: [AuthentificationService],
 })
-export class LoginComponent implements OnInit {
+export class LogInComponent implements OnInit {
 
 
   isLoggedIn : boolean;
@@ -16,15 +16,15 @@ export class LoginComponent implements OnInit {
   pseudo : string;
   password : string;
 
-  constructor(private authentificationService : AuthentificationService) {
+  constructor(private authenService : AuthentificationService) {
     this.pseudo = "";
     this.password = "";
-    this.isLoggedIn = this.authentificationService.getIsLoggedIn();
-    const idCurrentUser = this.authentificationService.getIdCurrentUser();
-    this.authentificationService.getUser(idCurrentUser).subscribe(data =>{
+    this.isLoggedIn = this.authenService.getIsLoggedIn();
+    const idCurrentUser = this.authenService.getIdCurrentUser();
+    this.authenService.getUser(idCurrentUser).subscribe(data =>{
         this.currentUser = data
       }, error =>{
-        //console.log('constructor error', error);
+        console.log('constructor error', error);
         this.currentUser = new User(NaN, "", "", "");
       }
     )
@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.authentificationService.logIn(this.pseudo, this.password).subscribe(data =>{
-        this.authentificationService.setIsLoggedIn(true);
-        this.authentificationService.setIdCurrentUser(data.idUser);
+    this.authenService.logIn(this.pseudo, this.password).subscribe(data =>{
+        this.authenService.setIsLoggedIn(true);
+        this.authenService.setIdCurrentUser(data.idUser);
         this.isLoggedIn = true;
         this.currentUser = data;
       },error =>{
@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit {
 
   logout(){
     console.log('logout')
-    this.authentificationService.setIsLoggedIn(false);
+    this.authenService.setIsLoggedIn(false);
     this.isLoggedIn = false;
-    this.authentificationService.setIdCurrentUser(-1);
+    this.authenService.setIdCurrentUser(-1);
     this.currentUser = new User(-1, "", "", "");
   }
 

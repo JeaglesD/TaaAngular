@@ -1,23 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './router/app-routing.module';
 import { SearchPlaceComponent } from './search-place/search-place.component';
 import { FilterCityPipePipe } from './filter-city--pipe.pipe';
-import { LoginComponent } from './login/login.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { HomeComponent } from './home/home.component';
+import { LogUpComponent } from './log-up/log-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchPlaceComponent,
     FilterCityPipePipe,
-    LoginComponent,
+    SearchPlaceComponent,
+    LogInComponent,
+    HomeComponent,
+    LogUpComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

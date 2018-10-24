@@ -1,0 +1,15 @@
+<div>
+  <h2>Log Up</h2>
+  <form (submit)="logup()">
+    <p>
+      Mail : <input [(ngModel)]="mail" type="text"/>
+    </p>
+    <p>
+      Pseudo : <input [(ngModel)]="pseudo" type="text"/>
+    </p>
+    <p>
+      Password : <input [(ngModel)]="password" type="password"/>
+    </p>
+    <input type="submit" value="Submit"/>
+  </form>
+</div>

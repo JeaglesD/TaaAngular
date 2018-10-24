@@ -1,5 +1,3 @@
-import { Place } from "./place"
-
 export class City {
   idCity : number;
   name : string;

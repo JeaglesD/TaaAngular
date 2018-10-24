@@ -36,6 +36,10 @@ export class AuthentificationService {
     return this.http.get<User>(url);
   }
 
+  public logUp(user : User){
+    
+  }
+
 
 
 }
