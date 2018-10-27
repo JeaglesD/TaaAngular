@@ -59,8 +59,8 @@ export class SearchPlaceComponent implements OnInit {
     console.log('selectedCity',this.cities[this.selectedCity])
     for(let idPlace of this.cities[this.selectedCity].idPlaces){
       console.log('places', this.places);
-       this.springService.getPlace(idPlace).subscribe(data =>{
-         this.places.push(data);
+       this.springService.getPlace(idPlace).subscribe(place =>{
+         this.places.push(place);
        }, error =>{
          console.log('getPlaces error:', error);
        })

@@ -1,15 +1,22 @@
 <div>
   <h2>Log Up</h2>
+  <div [hidden]="!error">
+    <p> There was a problem loggin up. Please try again.
+  </div>
   <form (submit)="logup()">
     <p>
-      Mail : <input [(ngModel)]="mail" type="text"/>
+      Mail : <input [(ngModel)]="newUser.mail" type="text" [ngModelOptions]="{standalone: true}"/>
     </p>
     <p>
-      Pseudo : <input [(ngModel)]="pseudo" type="text"/>
+      Pseudo : <input [(ngModel)]="newUser.pseudo" type="text" [ngModelOptions]="{standalone: true}"/>
     </p>
     <p>
-      Password : <input [(ngModel)]="password" type="password"/>
+      Password : <input [(ngModel)]="newUser.password" type="password"  [ngModelOptions]="{standalone: true}"/>
+    </p>
+    <p>
+      Confirmed password : <input [(ngModel)]="confPassword" type="password"  [ngModelOptions]="{standalone: true}"/>
     </p>
     <input type="submit" value="Submit"/>
   </form>
+  <p><a routerLink="/">Back</a></p>
 </div>

@@ -1,5 +1,11 @@
 <div>
-    <a routerLink="/login">Log in </a>
-    <a routerLink="/logup"> Log up</a>
+    <div [hidden]="!authenticated()">
+      <p>Your are log</p>
+      <button (click)="logout()">Log out</button>
+    </div>
+    <div [hidden]="authenticated()">
+      <p><a routerLink="/login">Log in</a></p>
+      <p><a routerLink="/logup">Log up</a></p>
+    </div>
    <app-search-place></app-search-place>
 </div>

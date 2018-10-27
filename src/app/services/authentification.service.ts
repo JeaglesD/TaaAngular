@@ -1,43 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user'
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../models/user'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentificationService {
 
+  authenticated = false;
+
   constructor(private http : HttpClient) { }
 
-  public setIsLoggedIn(value: boolean){
-    localStorage.setItem("isLoggedIn", value.toString());
+  authenticate(credentials, callback){
+    const headers = new HttpHeaders(credentials ? {
+      authorization : 'Basic ' + btoa(credentials.pseudo + ':' + credentials.password)
+    } : {});
+
+    this.http.get('user', {headers: headers}).subscribe(response => {
+      if(response['name']){
+        this.authenticated = true;
+      } else{
+        this.authenticated = false;
+      }
+      return callback && callback();
+    })
   }
 
-  public getIsLoggedIn(): boolean{
-    return JSON.parse(localStorage.getItem('isLoggedIn') || false.toString())
-  }
-
-  public setIdCurrentUser(idUser :  number){
-    localStorage.setItem("idCurrentUser", idUser.toString());
-  }
-
-  public getIdCurrentUser(): number{
-    return parseInt(localStorage.getItem('idCurrentUser'));
-  }
-
-  public logIn(username : string, password : string): Observable<User>{
-   const url = '/api/users/pseudo/' + username + '/password/' + password
-   return this.http.get<User>(url);
-  }
-
-  public getUser(idUser : number): Observable<User>{
-    const url = '/api/users/' + idUser;
-    return this.http.get<User>(url);
-  }
-
-  public logUp(user : User){
-    
+  public logUp(user: User): Observable<any>{
+    const url = '/api/users/create'
+    return this.http.post<any>(url, user)
   }
 
 
