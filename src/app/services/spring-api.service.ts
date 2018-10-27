@@ -8,22 +8,22 @@ import { Place } from '../models/place';
 })
 export class SpringApiService {
 
-  constructor(private http : HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  public getCities(search : string) : Observable<City[]>{
+  public getCities(search: string): Observable<City[]> {
     const url = '/api/cities/name/' + search;
-    return this.http.get<City[]>(url)
+    return this.http.get<City[]>(url);
   }
 
-  public getCity(idCity : number): Observable<City>{
-    const url = '/api/cities/'+ idCity
-    return this.http.get<City>(url)
+  public getCity(idCity: number): Observable<City> {
+    const url = '/api/cities/' + idCity;
+    return this.http.get<City>(url);
   }
 
-  public getPlace(idPlace : number): Observable<Place>{
-    console.log(idPlace, 'idPlace')
-    const url = '/api/places/'+ idPlace
-    return this.http.get<Place>(url)
+  public getPlace(idPlace: number): Observable<Place> {
+    console.log(idPlace, 'idPlace');
+    const url = '/api/places/' + idPlace;
+    return this.http.get<Place>(url);
   }
 
 

@@ -1,11 +1,11 @@
 export class User {
-  idUser : number;
-  pseudo : string;
-  password : string;
+  idUser: number;
+  pseudo: string;
+  password: string;
   mail: string;
   enabled: boolean;
   role: string;
-  idPlaces : number[];
+  idPlaces: number[];
   constructor(pseudo, password, mail, enalbed, role){
     this.pseudo = pseudo;
     this.password = password;
