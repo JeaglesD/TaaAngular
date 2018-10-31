@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { City } from '../models/city';
 import { Place } from '../models/place';
 import { OpenWeatherMapService } from '../services/open-weather-map.service';
 import { SpringApiService } from '../services/spring-api.service';
+import { User } from '../models/user';
 
 @Component({
-  selector: 'app-search-place',
-  templateUrl: './search-place.component.html',
-  styleUrls: ['./search-place.component.css'],
+  selector: 'app-add-place',
+  templateUrl: './add-place.component.html',
+  styleUrls: ['./add-place.component.css'],
   providers: [OpenWeatherMapService, SpringApiService]
 })
-export class SearchPlaceComponent implements OnInit {
+export class AddPlaceComponent implements OnInit {
+  @Input() user: User;
   searchCity: string;
   selectedCity: number;
   cities: City[];
@@ -56,14 +58,15 @@ export class SearchPlaceComponent implements OnInit {
   }
 
   getPlaces() {
-    console.log('selectedCity', this.cities[this.selectedCity]);
-    for (const idPlace of this.cities[this.selectedCity].idPlaces) {
-      console.log('places', this.places);
-       this.springService.getPlace(idPlace).subscribe(place => {
-         this.places.push(place);
-       }, error => {
-         console.log('getPlaces error:', error);
-       });
+    this.places = [];
+    let currentCity = this.cities[this.selectedCity]
+    console.log(currentCity, this.places)
+    for(const idPlace of currentCity.idPlaces) {
+      this.springService.getPlace(idPlace).subscribe(place =>{
+        this.places.push(place);
+      }, error =>{
+        console.log('getPlace error: ', error);
+      })
     }
   }
 

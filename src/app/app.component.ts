@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthentificationService } from './services/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,9 @@ import { AuthentificationService } from './services/authentification.service';
 })
 export class AppComponent {
   title: string;
-  constructor(private authenService: AuthentificationService){
-    this.title = 'angular';
-    this.authenService.authenticate(undefined, undefined);
+  constructor(){
+    this.title = 'Week-end Planner';
+
   }
 
 }

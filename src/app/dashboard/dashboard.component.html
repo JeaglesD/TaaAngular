@@ -1,0 +1,9 @@
+<div>
+  <table>
+    <tr>Places followed:</tr>
+    <tr  *ngFor="let place of places;">
+      <app-place [add]=false [place]=place [remove]=true></app-place>
+    </tr>
+  </table>
+  <app-add-place></app-add-place>
+</div>

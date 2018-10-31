@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthentificationService } from '../services/authentification.service';
-import { HttpClient } from '@angular/common/http';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private authenService: AuthentificationService,
-    private http: HttpClient,
     private router: Router
   ) { }
 
@@ -20,13 +19,13 @@ export class HomeComponent implements OnInit {
   }
 
   authenticated(): boolean{
-    return this.authenService.authenticated;
+    return this.authenService.isAuthenticated();
   }
 
   logout(){
-    this.http.post('logout', {}).subscribe(() => {
-          this.authenService.authenticated = false;
-          this.router.navigateByUrl('/login');
-      });
+    this.authenService.logout(() => {
+      this.router.navigateByUrl('/login')
+    });
+
   }
 }

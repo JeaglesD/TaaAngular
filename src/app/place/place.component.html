@@ -1,0 +1,5 @@
+
+  <td>{{place.name}}</td>
+  <td>{{place.address}}</td>
+  <td [hidden]="!remove" (click)="removePlaceToUser()"><button>Remove</button></td>
+  <td [hidden]="!add" (click)="addPlaceToUser()"><button>Add</button></td>

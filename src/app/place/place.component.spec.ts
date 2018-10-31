@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchPlaceComponent } from './search-place.component';
+import { PlaceComponent } from './place.component';
 
-describe('SearchPlaceComponent', () => {
-  let component: SearchPlaceComponent;
-  let fixture: ComponentFixture<SearchPlaceComponent>;
+describe('DisplayPlaceComponent', () => {
+  let component: PlaceComponent;
+  let fixture: ComponentFixture<PlaceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchPlaceComponent ]
+      declarations: [ PlaceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchPlaceComponent);
+    fixture = TestBed.createComponent(PlaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

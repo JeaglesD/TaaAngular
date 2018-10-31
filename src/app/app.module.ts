@@ -4,26 +4,31 @@ import { HttpClientModule} from '@angular/common/http';
 import { NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { SearchPlaceComponent } from './search-place/search-place.component';
 import { FilterCityPipePipe } from './filter-city--pipe.pipe';
-import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
+import { LogInComponent } from './log-in/log-in.component';
 import { LogUpComponent } from './log-up/log-up.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PlaceComponent } from './place/place.component';
+import { AddPlaceComponent } from './add-place/add-place.component';
 
 const routes : Routes = [
   { path: '', component: HomeComponent, },
   { path: 'login', component: LogInComponent, },
-  { path: 'logup', component : LogUpComponent, }
+  { path: 'logup', component : LogUpComponent, },
+  { path: 'home', component: HomeComponent, },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterCityPipePipe,
-    SearchPlaceComponent,
+    AddPlaceComponent,
     LogInComponent,
     HomeComponent,
     LogUpComponent,
+    DashboardComponent,
+    PlaceComponent,
   ],
   imports: [
     FormsModule,

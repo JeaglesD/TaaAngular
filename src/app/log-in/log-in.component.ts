@@ -22,7 +22,7 @@ credentials = {pseudo: '', password: ''};
 
   login(){
     this.authenService.authenticate(this.credentials, () => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/home');
     })
   }
 }

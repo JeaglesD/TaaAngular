@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    Add place:
+  </tr>
+  <tr>
+    <td>
+      <input [(ngModel)]="searchCity" placeholder="city name"/>
+    </td>
+    <td>
+      <button (click)="getCities()">Search</button>
+    </td>
+    <td>
+      <select [(ngModel)]="selectedCity" (change)="onChangeCity()">
+        <option *ngFor="let city of cities | filterCityPipe:'name':searchCity; index as i;"[value]="i">
+          {{city.name}} {{city.postCode}}
+        </option>
+      </select>
+    </td>
+  </tr>
+  <tr *ngFor="let place of places">
+    <app-place [add]=true [place]=place [remove]=false></app-place>
+  </tr>
+</table>

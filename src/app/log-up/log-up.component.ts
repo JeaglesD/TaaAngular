@@ -30,7 +30,7 @@ export class LogUpComponent implements OnInit {
       this.newUser.pseudo != "" &&
       this.newUser.password == this.confPassword){
         //TODO Handle result authenService
-        this.authenService.logUp(this.newUser).subscribe();
+        this.authenService.logup(this.newUser).subscribe();
     }else{
       this.error = true;
     }
