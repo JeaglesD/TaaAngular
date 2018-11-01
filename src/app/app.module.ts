@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
-import { NgModule} from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FilterCityPipePipe } from './filter-city--pipe.pipe';
@@ -19,6 +19,17 @@ const routes : Routes = [
   { path: 'logup', component : LogUpComponent, },
   { path: 'home', component: HomeComponent, },
 ];
+// should intercept the spring security pop up but did not work.
+// @Injectable()
+// export class XhrInterceptor implements HttpInterceptor {
+//
+//   intercept(req: HttpRequest<any>, next: HttpHandler) {
+//     const xhr = req.clone({
+//       headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+//     });
+//     return next.handle(xhr);
+//   }
+// }
 
 @NgModule({
   declarations: [

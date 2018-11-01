@@ -4,6 +4,6 @@
 <td [hidden]="!add" (click)="addPlaceToUser()"><button>Add</button></td>
 <tr [hidden]="activities.length == 0">
   <td *ngFor="let activity of activities">
-    <app-activity [activity]=activity [idCity]=place.idCity></app-activity>
+    <app-activity [activity]=activity [temp]=temp></app-activity>
   </td>
 </tr>
