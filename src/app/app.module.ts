@@ -11,6 +11,7 @@ import { LogUpComponent } from './log-up/log-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PlaceComponent } from './place/place.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
+import { ActivityComponent } from './activity/activity.component';
 
 const routes : Routes = [
   { path: '', component: HomeComponent, },
@@ -29,6 +30,7 @@ const routes : Routes = [
     LogUpComponent,
     DashboardComponent,
     PlaceComponent,
+    ActivityComponent,
   ],
   imports: [
     FormsModule,

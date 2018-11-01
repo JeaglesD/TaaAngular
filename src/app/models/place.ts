@@ -3,14 +3,14 @@ export class Place {
   name: string;
   address: string;
   idCity: number;
-  idActivites: number[];
+  idActivities: number[];
   idUsers: number[];
-  constructor(idPlace, name, address, idCity, idActivites, idUsers) {
+  constructor(idPlace, name, address, idCity, idActivities, idUsers) {
     this.idPlace = idPlace;
     this.name = name;
     this.address = address;
     this.idCity = idCity;
-    this.idActivites = idActivites;
+    this.idActivities = idActivities;
     this.idUsers = idUsers;
   }
 }

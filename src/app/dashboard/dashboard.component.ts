@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.authenService.castUser.subscribe(user=>{
       this.user = user
-      console.log('newUser', user);
       this.loadPlaces();
     });
   }

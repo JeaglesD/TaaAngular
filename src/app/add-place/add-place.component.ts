@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { City } from '../models/city';
 import { Place } from '../models/place';
-import { OpenWeatherMapService } from '../services/open-weather-map.service';
 import { SpringApiService } from '../services/spring-api.service';
 import { User } from '../models/user';
 
@@ -9,7 +8,7 @@ import { User } from '../models/user';
   selector: 'app-add-place',
   templateUrl: './add-place.component.html',
   styleUrls: ['./add-place.component.css'],
-  providers: [OpenWeatherMapService, SpringApiService]
+  providers: [SpringApiService]
 })
 export class AddPlaceComponent implements OnInit {
   @Input() user: User;
@@ -21,7 +20,6 @@ export class AddPlaceComponent implements OnInit {
   places: Place[];
 
   constructor(
-    private weatherService: OpenWeatherMapService,
     private springService: SpringApiService) {
     this.searchCity = '';
     this.selectedCity = -1;
@@ -36,7 +34,6 @@ export class AddPlaceComponent implements OnInit {
   }
 
   onChangeCity() {
-    this.getWeather();
     this.getPlaces();
   }
 
@@ -45,15 +42,6 @@ export class AddPlaceComponent implements OnInit {
       this.cities = data;
     }, error => {
       console.log('getCities error:', error);
-    });
-  }
-
-  getWeather() {
-    const cityName = this.cities[this.selectedCity].name;
-    this.weatherService.getWeather(cityName, 'fr').subscribe(data => {
-      console.log('getWeather', data);
-    }, error => {
-      console.log('getWeather error:', error);
     });
   }
 
