@@ -75,24 +75,23 @@ export class PlaceComponent implements OnInit {
   public loadAvailabe():void {
     this.weatherService.getWeather(this.city.name, 'fr').subscribe(data => {
       this.temp = this.getTemp(data);
+      // console.log('this.temp', this.temp)
     }, error => {
       console.log('getWeather error:', error);
     });
   }
 
   public getTemp(data: any):number{
-    let currentDate = new Date()
-    let currentDay = currentDate.getDay();
-    let nextSaturday = 6 - currentDay;
-    let timeSaturday = currentDate.getTime() + nextSaturday * 24 * 60 * 60 * 1000
-    if(new Date(timeSaturday).getDay() != 6){
-      console.log('getTemp error: not saturday')
-      return NaN;
-    }else{
-      timeSaturday = timeSaturday / 1000
-      let weather = data.list.filter(weather =>weather.dt > timeSaturday)[0];
-      return weather.main.temp;
-    }
+    const currentDate = new Date()
+    const currentDay = currentDate.getDay();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentYear = currentDate.getFullYear();
+    const nextSaturday = currentDate.getDate() + 6 - currentDay
+    let dateSaturday = currentYear + '-' + currentMonth + '-' + nextSaturday + ' 12:00:00';
+    let weather = data.list.filter(weather => weather.dt_txt == dateSaturday)[0];
+    // console.log('weather', weather)
+    return weather.main.temp;
+
   }
 
 }

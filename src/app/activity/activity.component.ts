@@ -14,8 +14,10 @@ export class ActivityComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(){
     this.available = this.activity.minTemp < this.temp &&
     this.activity.maxTemp > this.temp;
   }
-
 }
